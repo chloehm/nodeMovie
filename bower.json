@@ -1,0 +1,25 @@
+{
+  "name": "movie",
+  "authors": [
+    "phm"
+  ],
+  "description": "0.0.1",
+  "main": "",
+  "keywords": [
+    "movie"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}

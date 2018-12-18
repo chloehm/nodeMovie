@@ -1,0 +1,23 @@
+{
+  "name": "movie-node",
+  "version": "0.0.1",
+  "description": "movie node",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jade": "^1.11.0",
+    "moment": "^2.23.0",
+    "mongoose": "^5.4.0",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "movie"
+  ],
+  "author": "phm",
+  "license": "ISC"
+}
