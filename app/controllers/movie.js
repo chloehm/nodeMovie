@@ -1,13 +1,22 @@
 var Movie = require('../models/movie')
+var Comment = require('../models/comment')
 var _ = require('underscore')
 
  //detail page
  exports.detail = function(req, res) {
     var id = req.params.id
     Movie.findById(id, function(err, movie) {
-        res.render('detail', {
-            title: '电影 ' + movie['title'],
-            movie: movie
+        Comment
+        .find({movie: id})
+        .populate('from', 'userName') //第一个参数path，第二个参数传要生成的字段
+        .populate('reply.from reply.to', 'userName') //第一个参数path，第二个参数传要生成的字段
+        .exec(function(err, comments) {
+            console.log(comments)
+            res.render('detail', {
+                title: '电影 ' + movie['title'],
+                movie: movie,
+                comments: comments
+            })
         })
     })
 }
