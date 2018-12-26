@@ -1,19 +1,13 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId
-var MovieSchema = new Schema({
-    doctor: String,
-    title: String,
-    language: String,
-    year: Number,
-    country: String,
-    summary: String,
-    poster: String,
-    flash: String,
-    category: {
-        type: ObjectId,
-        ref: 'Category'
-    },
+
+var CategorySchema = new Schema({
+    name: String,
+    movies: [
+        {type: ObjectId, ref:'Movie'}
+    ],
+    description: String,
     meta: {
         createAt: {
             type: Date,
@@ -26,7 +20,7 @@ var MovieSchema = new Schema({
     }
 }) 
 
-MovieSchema.pre('save',function(next) {
+CategorySchema.pre('save',function(next) {
     if(this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
     }else {
@@ -35,7 +29,7 @@ MovieSchema.pre('save',function(next) {
     next()
 })
 
-MovieSchema.statics = {
+CategorySchema.statics = {
     fetch: function(cb) {
         return this
         .find({ })   //查找所有数据
@@ -48,4 +42,4 @@ MovieSchema.statics = {
         .exec(cb)
     }
 }
-module.exports = MovieSchema
+module.exports = CategorySchema

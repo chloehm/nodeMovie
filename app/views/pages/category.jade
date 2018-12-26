@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .container
+    form(method="POST",action="/admin/category")
+      //- input(type="hidden", name="category[_id]", value="#{category._id}")
+      .form-group.row
+        label.col-sm-2.col-form-label(for="inputCategoryName") 电影分类
+        .col-sm-10
+          input#inputCategoryName.form-control(type="text", name="category[name]", value=category.name)
+      .form-group.row
+        .col-sm-offset-2.col-sm-10
+        button.btn.btn-primary(type="submit") 录入
